@@ -20,11 +20,13 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+//blok kode dibawah berfungsi untuk mengakses database
 @Dao
 interface VideoDao {
+    //method kueri ini digunakan untuk untuk mendapatkan data video dari database
     @Query("select * from databasevideo")
     fun getVideos(): LiveData<List<DatabaseVideo>>
-
+    //method kueri ini digunakan untuk untuk memasukkan data video ke database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll( videos: List<DatabaseVideo>)
 }
@@ -38,6 +40,7 @@ abstract class VideosDatabase: RoomDatabase() {
 
 private lateinit var INSTANCE: VideosDatabase
 
+//blok kode di bawah adalah blok kode untuk membuat instance database dengan room
 fun getDatabase(context: Context): VideosDatabase {
     synchronized(VideosDatabase::class.java) {
         if (!::INSTANCE.isInitialized) {

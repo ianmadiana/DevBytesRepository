@@ -30,6 +30,7 @@ import timber.log.Timber
 /**
  * Repository for fetching devbyte videos from the network and storing them on disk
  */
+//class di VideosRepository berfungsi untuk mengambil data dari jaringan
 class VideosRepository(private val database: VideosDatabase) {
 
     val videos: LiveData<List<DevByteVideo>> = Transformations.map(database.videoDao.getVideos()) {
@@ -48,6 +49,7 @@ class VideosRepository(private val database: VideosDatabase) {
         withContext(Dispatchers.IO) {
             Timber.d("refresh videos is called");
             val playlist = DevByteNetwork.devbytes.getPlaylist()
+//            Menyipan playlist video dan memetakannya sebagai objek database
             database.videoDao.insertAll(playlist.asDatabaseModel())
         }
     }

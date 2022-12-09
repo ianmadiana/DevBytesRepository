@@ -29,6 +29,7 @@ import retrofit2.http.GET
 /**
  * A retrofit service to fetch a devbyte playlist.
  */
+//blok kode di bawah adalah library retrofit yang berfungsi untuk request ke jaringan
 interface DevbyteService {
     @GET("devbytes")
     suspend fun getPlaylist(): NetworkVideoContainer
@@ -42,6 +43,7 @@ object DevByteNetwork {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
             .baseUrl("https://android-kotlin-fun-mars-server.appspot.com/")
+//            library untuk parsing ke JSON
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 

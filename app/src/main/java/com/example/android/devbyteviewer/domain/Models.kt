@@ -29,6 +29,8 @@ import com.example.android.devbyteviewer.util.smartTruncate
 /**
  * Videos represent a devbyte that can be played.
  */
+
+//class data DevByteVide mereferensikan satu DevByte video
 data class DevByteVideo(val title: String,
                         val description: String,
                         val url: String,
@@ -38,6 +40,7 @@ data class DevByteVideo(val title: String,
     /**
      * Short description is used for displaying truncated descriptions in the UI
      */
+//    variable shortDescription berfungsi untuk memotong deskripsi video di UI
     val shortDescription: String
         get() = description.smartTruncate(200)
 }
